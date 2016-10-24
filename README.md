@@ -1,4 +1,4 @@
-# C5-Platform
+# C5-Platform (currently in development)
 <br/>
 A retro platform game that offers a more flexible game engine, 
 <br/>
