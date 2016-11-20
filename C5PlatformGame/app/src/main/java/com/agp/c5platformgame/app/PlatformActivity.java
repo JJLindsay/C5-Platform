@@ -2,11 +2,8 @@ package com.agp.c5platformgame.app;
 
 import android.app.Activity;
 import android.graphics.Point;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.Display;
-import android.view.Menu;
-import android.view.MenuItem;
 
 /**
  * To comment out a line = ctrl + (keypad /)
@@ -15,42 +12,50 @@ import android.view.MenuItem;
  * To remove unused imports = ctrl + alt + o
  * To format code = ctrl + alt + L
  * To run class = ctrl +  shift + F10
- *
- *The main activity. This is where it all starts.
+ * <p/>
+ * The main activity. This is where it all starts.
  */
 public class PlatformActivity extends Activity
 {
     private PlatformView mPlatformView;
 
+    /**
+     * Called when opening for the first time or after it has been destroyed and opened again.
+     */
     @Override
     public void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
 
-        //store screen (or display) details
+        //store device screen/display details
         Display display = getWindowManager().getDefaultDisplay();
 
-        //store the screen size in the x,y of Point
+        //store the device's screen size in the x,y of Point
         Point resolution = new Point();
         display.getSize(resolution);
 
-        //Create a surfaceView object
+        //Create a surfaceView object which allows the view to be locked, erased, drawn on, and unlocked repeatedly.
         mPlatformView = new PlatformView(this, resolution.x, resolution.y);
 
         //Defer view to the surfaceView
         setContentView(mPlatformView);
     }
 
+    /**
+     * Called when this app is returned to the foreground.
+     */
     public void onResume()
     {
         super.onResume();
         mPlatformView.resume();
     }
 
+    /**
+     * Called when another app has moved to the foreground
+     */
     public void onPause()
     {
         super.onPause();
         mPlatformView.pause();
     }
-
 }
