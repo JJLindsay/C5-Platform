@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * To remove unused imports = ctrl + alt + o
  * To format code = ctrl + alt + L
  * To run class = ctrl +  shift + F10
+ * Finds the next occurrence of the currently selected text = ctrl + F3
  *
  * This class contains the starting position for the all game objects
  * in the Cave level

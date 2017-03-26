@@ -13,6 +13,7 @@ import java.util.ArrayList;
  * To remove unused imports = ctrl + alt + o
  * To format code = ctrl + alt + L
  * To run class = ctrl +  shift + F10
+ * Finds the next occurrence of the currently selected text = ctrl + F3
  *
  * This class knows all the levels, the gameObjects in each level, and all the bitmaps in each level.
  * This class is called to build a level.
@@ -67,7 +68,7 @@ public class LevelManager
         loadMapData(context, pixelsPerMeter, px, py);
 
         //ready to play
-        mPlaying = true;
+        //mPlaying = true;
     }
 
     /**
@@ -197,5 +198,44 @@ public class LevelManager
     public Bitmap[] getBitmapsArray()
     {
         return mBitmapsArray;
+    }
+
+    public boolean isPlaying()
+    {
+        return mPlaying;
+    }
+
+    public void setPlaying(boolean playing)
+    {
+        mPlaying = playing;
+    }
+
+    public float getGravity()
+    {
+        return mGravity;
+    }
+
+    public void setGravity(float gravity)
+    {
+        mGravity = gravity;
+    }
+
+    public void switchPlayingStatus()
+    {
+        setPlaying(!isPlaying());
+
+        if (isPlaying())
+        {
+            setGravity(6);
+        }
+        else
+        {
+            setGravity(0);
+        }
+    }
+
+    public Player getPlayer()
+    {
+        return mPlayer;
     }
 }

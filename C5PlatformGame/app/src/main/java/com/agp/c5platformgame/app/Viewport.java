@@ -10,6 +10,7 @@ import android.graphics.Rect;
  * To format code = ctrl + alt + L
  * To run class = ctrl +  shift + F10
  *
+ * This class is the camera for all intensive purposes:
  * This class deals with the interaction between the device, game objects,
  * and the 'camera' that follows the action of the player. Typically it will be
  * centered on the player. It defines what in the world will be shown to the player.
@@ -58,8 +59,8 @@ public class Viewport
      */
     public void setWorldCenterPoint(float x, float y)
     {
-        currentViewportWorldCenterPoint.x = x;
-        currentViewportWorldCenterPoint.y = y;
+        currentViewportWorldCenterPoint.setX(x);
+        currentViewportWorldCenterPoint.setY(y);
     }
 
     /**
@@ -74,8 +75,8 @@ public class Viewport
     public Rect worldToScreen(float objectX, float objectY, float objectWidth, float objectHeight)
     {
         // screen center x (in pixels) minus ((what is the distance between the center of the camera and the x point of the object?) converted to pixels)
-        int left = (int) (screenCenterX - ((currentViewportWorldCenterPoint.x - objectX) * pixelsPerMeterX));
-        int top = (int) (screenCenterY - ((currentViewportWorldCenterPoint.y - objectY) * pixelsPerMeterY));
+        int left = (int) (screenCenterX - ((currentViewportWorldCenterPoint.getX() - objectX) * pixelsPerMeterX));
+        int top = (int) (screenCenterY - ((currentViewportWorldCenterPoint.getY() - objectY) * pixelsPerMeterY));
         int right = (int) (left + (objectWidth * pixelsPerMeterX));
         int bottom = (int) (top + (objectHeight * pixelsPerMeterY));
 
@@ -100,13 +101,13 @@ public class Viewport
         boolean clipped  = true;
 
         //if the object is beyond the viewPort to the right (for example), it will be clipped
-        if (objectX - objectWidth < currentViewportWorldCenterPoint.x + (metersToShowX / 2))  //compare the leftmost side of the object to the right most side of the viewPort
+        if (objectX - objectWidth < currentViewportWorldCenterPoint.getX() + (metersToShowX / 2))  //compare the leftmost side of the object to the right most side of the viewPort
         {
-            if (objectX + objectWidth > currentViewportWorldCenterPoint.x - (metersToShowX / 2))  //compare rightmost side of the object to the leftmost side of the viewPort
+            if (objectX + objectWidth > currentViewportWorldCenterPoint.getX() - (metersToShowX / 2))  //compare rightmost side of the object to the leftmost side of the viewPort
             {
-                if (objectY - objectHeight < currentViewportWorldCenterPoint.y + (metersToShowY / 2))  //compare the lowest point of the object to the
+                if (objectY - objectHeight < currentViewportWorldCenterPoint.getY() + (metersToShowY / 2))  //compare the lowest point of the object to the
                 {
-                    if (objectY + objectHeight > currentViewportWorldCenterPoint.y + (metersToShowY / 2))
+                    if (objectY + objectHeight > currentViewportWorldCenterPoint.getY() - (metersToShowY / 2))
                     {
                         clipped = false;
                     }

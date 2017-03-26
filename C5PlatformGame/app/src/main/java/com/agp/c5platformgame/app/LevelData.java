@@ -9,6 +9,7 @@ import java.util.ArrayList;
  * To remove unused imports = ctrl + alt + o
  * To format code = ctrl + alt + L
  * To run class = ctrl +  shift + F10
+ * Finds the next occurrence of the currently selected text = ctrl + F3
  *
  * This class holds an arraylist with the layout tiles for a
  * level. Each level will create an instance of this class.

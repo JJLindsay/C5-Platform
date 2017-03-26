@@ -7,6 +7,7 @@ package com.agp.c5platformgame.app;
  * To remove unused imports = ctrl + alt + o
  * To format code = ctrl + alt + L
  * To run class = ctrl +  shift + F10
+ * Finds the next occurrence of the currently selected text = ctrl + F3
  *
  * The class is the camera for the game.
  * This is the 'game world' for all intensive purposes.
@@ -14,7 +15,37 @@ package com.agp.c5platformgame.app;
  */
 public class Vector2Point5D
 {
-    public float x;
-    public float y;
-    public int z;
+    private float x;
+    private float y;
+    private int z;
+
+    public float getX()
+    {
+        return x;
+    }
+
+    public void setX(float x)
+    {
+        this.x = x;
+    }
+
+    public float getY()
+    {
+        return y;
+    }
+
+    public void setY(float y)
+    {
+        this.y = y;
+    }
+
+    public int getZ()
+    {
+        return z;
+    }
+
+    public void setZ(int z)
+    {
+        this.z = z;
+    }
 }

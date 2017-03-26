@@ -7,6 +7,7 @@ package com.agp.c5platformgame.app;
  * To remove unused imports = ctrl + alt + o
  * To format code = ctrl + alt + L
  * To run class = ctrl +  shift + F10
+ * Finds the next occurrence of the currently selected text = ctrl + F3
  *
  * This class builds a Grass game object.
  * It knows how it should be updated and with its
@@ -27,10 +28,13 @@ public class Grass extends GameObject
         //choose a bitmap and set its location
         super.setBitmapName("turf");
         super.setWorldLocation(worldStartX, worldStartY, 0);  //(x,y,z)
+
+        //add hitbox
+        setRectangleHitBox();
     }
 
     @Override
-    public void update(Long fps, float gravity)
+    public void update(long fps, float gravity)
     {
         //TODO
     }
